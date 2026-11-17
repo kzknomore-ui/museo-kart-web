@@ -7,6 +7,7 @@
 <meta name="description" content="Los Museos se agarran a autitazos: choris, reels y miel de carpincho.">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0E1014">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E1014'/%3E%3Crect x='10' y='28' width='44' height='14' rx='5' fill='%23F08A3C'/%3E%3Crect x='24' y='18' width='14' height='12' rx='3' fill='%23F08A3C'/%3E%3Ccircle cx='19' cy='45' r='7' fill='%23F2F1ED'/%3E%3Ccircle cx='45' cy='45' r='7' fill='%23F2F1ED'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&display=swap">
 <style>
@@ -287,17 +288,18 @@
      ===================================================================== -->
 <script>
 /*MOTOR-INICIO*/
-/* Los 10 de siempre: pelo, remera y barba copiados de CREW en Los Museos. No se cambian. */
+/* Los 10 de siempre: pelo, remera y barba copiados de CREW en ¡Los Fisuras Atacan! (ajustados con las
+   fotos de Ivan el 17/11/2026). No se cambian acá: si cambia allá, se copia de nuevo. */
 const CREW = {
   tomy  :{n:"Tomy",      hair:"#C2571F", style:"rulos",      beard:false, tall:1.00, shirt:"#4E8FD0"},
   lamber:{n:"Lamber",    hair:"#1E1A18", style:"corto",      beard:true,  tall:1.00, shirt:"#57A06B"},
-  chupa :{n:"Chupa",     hair:"#1E1A18", style:"corto",      beard:false, tall:1.00, shirt:"#C9603F"},
+  chupa :{n:"Chupa",     hair:"#1E1A18", style:"corto",      beard:true,  tall:1.00, shirt:"#C9603F"},
   kzk   :{n:"Kzk",       hair:"#A9793F", style:"corto",      beard:true,  tall:1.00, shirt:"#8A6BC4"},
-  matxi :{n:"Matxi",     hair:"#6B4526", style:"corto",      beard:false, tall:1.00, shirt:"#D8A33C"},
-  chuna :{n:"Chuna",     hair:"#3A2416", style:"largorulos", beard:false, tall:1.00, shirt:"#3FA6A0"},
+  matxi :{n:"Matxi",     hair:"#2A1D14", style:"medio",      beard:false, tall:1.00, shirt:"#D8A33C"},
+  chuna :{n:"Chuna",     hair:"#2A1A12", style:"rulos",      beard:true,  tall:1.00, shirt:"#3FA6A0"},
   hippie:{n:"El Hippie", hair:"#1E1A18", style:"corto",      beard:false, tall:1.18, shirt:"#22242A"},
-  marian:{n:"Marian",    hair:"#7A5230", style:"largo",      beard:false, tall:1.10, shirt:"#5B7FD4"},
-  damian:{n:"Damián",    hair:"#1E1A18", style:"medio",      beard:false, tall:1.00, shirt:"#7FA23E"},
+  marian:{n:"Marian",    hair:"#6B4526", style:"rulos",      beard:false, tall:1.10, shirt:"#5B7FD4"},
+  damian:{n:"Damián",    hair:"#1E1A18", style:"largo",      beard:false, tall:1.00, shirt:"#7FA23E"},
   negro :{n:"El Negro",  hair:"#2A1D14", style:"corto",      beard:true,  tall:1.00, shirt:"#6B4A2F", skin:"#8A5A38"},
 };
 
@@ -309,13 +311,13 @@ const PERFIL = {
           gana:"CORTE BLDO",                    pierde:"pfff bldo",                     acc:"vaso",     lleva:"el vaso de fernet"},
   chupa :{rol:"el de la mudanza",          desc:"Siempre se está mudando y siempre necesita un flete. Saluda con “Museoss, buen diaa”.",
           gana:"¿Ta bie?",                      pierde:"keee??",                        acc:"caja",     lleva:"una caja de mudanza"},
-  kzk   :{rol:"el que hace los juegos",    desc:"Anda en monopatín, edita todos sus mensajes y nunca sale sin el Pigui.",
+  kzk   :{rol:"el de la buena onda",       desc:"Hace los juegos del grupo. Sahumerio, piernas cruzadas y el Pigui siempre al lado. Edita todos sus mensajes.",
           gana:"jajaja mis diseños",            pierde:"<Se editó este mensaje>",       acc:"pigui",    lleva:"al Pigui atrás"},
   matxi :{rol:"el Cartero",                desc:"El analista del grupo: párrafos largos, los mejores stickers y el álbum de los museo. Hincha de Boca.",
           gana:"El cartero no llama dos veces", pierde:"o sea... quizás",               acc:"bolso",    lleva:"el bolso de cartero"},
   chuna :{rol:"el que siempre labura",     desc:"Los fines de semana trabaja siempre. Manda audios y aparece de golpe: “Holis, bellos míos”.",
           gana:"Soy yoooo, Chuna",              pierde:"me están manijeando",           acc:"delantal", lleva:"el delantal"},
-  hippie:{rol:"el de la moto",             desc:"Supervisa la movida, es su cargo hasta nuevo aviso. Para él todo está flama.",
+  hippie:{rol:"el motoquero",              desc:"Motoquero y metalero: “Hippie” es sólo el apodo. Supervisa la movida y para él todo está flama.",
           gana:"todo flama",                    pierde:"cabeza flama, tenía el casco",  acc:"casco",    lleva:"el casco de la moto"},
   marian:{rol:"el de los reels",           desc:"Manda reels sin parar, siempre con “el primer comentario JAJAJA”. Va al gym del tío Marian.",
           gana:"jajaja mal",                    pierde:"olvidate, amigo",               acc:"celu",     lleva:"el celu con un reel"},
@@ -817,7 +819,7 @@ $("#capaAyuda").addEventListener("click",ev=>{ if(ev.target.id==="capaAyuda") ce
 if(!leer("vioAyuda")) abrirAyuda("juego");
 
 /* ---------- ¿Hay una versión nueva publicada? (el teléfono a veces guarda la vieja) ---------- */
-const VERSION="202611171808";
+const VERSION="202611171823";
 async function buscarVersionNueva(){
   if(!/^https?:$/.test(location.protocol)) return;
   try{
@@ -1074,7 +1076,7 @@ function empezar(){
   mallas={ karts:E.karts.map(k=>{ const m=armarKart(k,!k.bot); scene.add(m); return m; }), cajas:E.cajas.map(c=>{ const m=armarCaja(); m.position.set(c.x,1.3,c.z); scene.add(m); return m; }), proys:new Map(), minas:new Map() };
   const yo=E.karts[0]; camPos.set(yo.x-Math.sin(yo.a)*12, 8, yo.z-Math.cos(yo.a)*12); camMira.set(yo.x,1,yo.z);
   $("#menu").classList.add("oculto"); $("#capaFin").classList.add("oculto"); $("#capaPausa").classList.add("oculto");
-  $("#hud").classList.remove("oculto"); $("#feed").innerHTML="";
+  $("#hud").classList.remove("oculto"); $("#feed").innerHTML=""; soltarStick();
   pausa=false; enJuego=true; ultimaArma="x"; pintarUsar(); pintarTabla(); gritoCuenta=4;
   if(innerWidth<innerHeight && matchMedia("(pointer:coarse)").matches) avisar("Tip: con el teléfono de costado se ve más pista","");
 }
